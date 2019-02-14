@@ -8,6 +8,7 @@
 
 <script>
 import pageTable from '_c/page-table'
+
 export default {
   components: {
     pageTable

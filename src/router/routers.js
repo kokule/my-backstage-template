@@ -87,6 +87,15 @@ export default [
           title: '分页表格'
         },
         component: () => import('@/view/curd-components/page-table/page-table.vue')
+      },
+      {
+        path: 'auto-form',
+        name: 'auto-form',
+        meta: {
+          icon: 'md-clipboard',
+          title: '自动表单'
+        },
+        component: () => import('@/view/curd-components/auto-form/auto-form.vue')
       }
     ]
   },
