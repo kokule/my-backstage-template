@@ -56,10 +56,18 @@ export default {
         if (item.formType && item.formType !== 'hidden') {
           this.displayFormItems.push(item)
         }
+        if (item.rules && item.rules.length > 0) {
+          this.ruleModel[item.name] = item.rules
+        }
       })
+      console.log(this.ruleModel)
     },
     save () {
-      console.log(this.formModel)
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          console.log('表单数据', this.formModel)
+        }
+      })
     }
   }
 }
