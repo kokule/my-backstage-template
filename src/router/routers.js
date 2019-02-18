@@ -96,6 +96,15 @@ export default [
           title: '自动表单'
         },
         component: () => import('@/view/curd-components/auto-form/auto-form.vue')
+      },
+      {
+        path: 'modal-form',
+        name: 'modal-form',
+        meta: {
+          icon: 'md-albums',
+          title: '模态框表单'
+        },
+        component: () => import('@/view/curd-components/modal-form/modal-form')
       }
     ]
   },

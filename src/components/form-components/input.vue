@@ -42,6 +42,11 @@ export default {
       formValue: null
     }
   },
+  watch: {
+    value (val, oldVal) {
+      this.initData()
+    }
+  },
   mounted () {
     this.initData()
   },

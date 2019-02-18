@@ -3,7 +3,7 @@
     <FormItem v-for="item in displayFormItems" :key="item.name" :prop="item.name" :label="item.label">
       <component :is="formComponents[item.formType]" v-model="formModel[item.name]" :options="item.options"></component>
     </FormItem>
-    <FormItem>
+    <FormItem v-show="!hideSubmit">
       <Button type="primary" @click="save">保存</Button>
     </FormItem>
   </Form>
@@ -33,6 +33,10 @@ export default {
     },
     editUrl: {
       type: String
+    },
+    hideSubmit: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -46,11 +50,21 @@ export default {
       }
     }
   },
+  watch: {
+    formItems: {
+      handler (val, oldVal) {
+        this.initData()
+      },
+      deep: true
+    }
+  },
   mounted () {
     this.initData()
   },
   methods: {
     initData () {
+      this.formModel = {}
+      this.displayFormItems = []
       this.formItems.forEach(item => {
         this.formModel[item.name] = item.value
         if (item.formType && item.formType !== 'hidden') {
@@ -60,14 +74,17 @@ export default {
           this.ruleModel[item.name] = item.rules
         }
       })
-      console.log(this.ruleModel)
+      console.log(this.formModel)
     },
     save () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          console.log('表单数据', this.formModel)
+          this.$emit('saved', this.formModel)
         }
       })
+    },
+    resetFields () {
+      this.$refs.form.resetFields()
     }
   }
 }

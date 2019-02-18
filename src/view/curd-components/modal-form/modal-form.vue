@@ -1,16 +1,26 @@
 <template>
-  <Card>
-    <auto-form :formItems="formItems"></auto-form>
-    <Button @click="evaluate">动态赋值</Button>
-  </Card>
+  <div>
+    <Card>
+      <Row>
+        <Col span="24">
+          <pre> {{ JSON.stringify(info) }} </pre>
+        </Col>
+        <Col span="24">
+          <Button @click="add" type="primary">新增</Button>
+          <Button @click="edit" style="margin-left: 10px;">修改</Button>
+        </Col>
+      </Row>
+      <modal-form ref="modal" :formItems="formItems" @saved="savedHandle"></modal-form>
+    </Card>
+  </div>
 </template>
 
 <script>
-import autoForm from '_c/auto-form'
+import modalForm from '_c/modal-form'
 
 export default {
   components: {
-    autoForm
+    modalForm
   },
   data () {
     return {
@@ -68,14 +78,27 @@ export default {
             ]
           }
         }
-      ]
+      ],
+      info: {
+        username: '',
+        password: '',
+        city: null
+      }
     }
   },
   methods: {
-    evaluate () {
-      this.formItems[0].value = 'zhu'
-      this.formItems[1].value = '123456'
-      this.formItems[2].value = 3
+    add () {
+      this.$refs.modal.showAdd()
+    },
+    edit () {
+      this.formItems[0].value = 'user'
+      this.$refs.modal.showEdit()
+    },
+    savedHandle (formModel) {
+      console.log(formModel)
+      this.info.username = formModel.username
+      this.info.password = formModel.password
+      this.info.city = formModel.city
     }
   }
 }
