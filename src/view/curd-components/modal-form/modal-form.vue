@@ -88,10 +88,15 @@ export default {
   },
   methods: {
     add () {
+      this.formItems[0].value = ''
+      this.formItems[1].value = ''
+      this.formItems[2].value = ''
       this.$refs.modal.showAdd()
     },
     edit () {
-      this.formItems[0].value = 'user'
+      this.formItems[0].value = 'zhu'
+      this.formItems[1].value = '123456'
+      this.formItems[2].value = 3
       this.$refs.modal.showEdit()
     },
     savedHandle (formModel) {

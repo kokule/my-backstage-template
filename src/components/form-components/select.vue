@@ -41,6 +41,9 @@ export default {
   },
   mounted () {
     this.initData()
+    this.$bus.on('initFormItem', () => {
+      this.initData()
+    })
   },
   methods: {
     initData () {

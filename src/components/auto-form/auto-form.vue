@@ -1,6 +1,6 @@
 <template>
   <Form ref="form" :model="formModel" :rules="ruleModel">
-    <FormItem v-for="item in displayFormItems" :key="item.name" :prop="item.name" :label="item.label">
+    <FormItem v-for="(item, index) in displayFormItems" :key="item.formType + item.name + index" :prop="item.name" :label="item.label">
       <component :is="formComponents[item.formType]" v-model="formModel[item.name]" :options="item.options"></component>
     </FormItem>
     <FormItem v-show="!hideSubmit">
@@ -74,7 +74,7 @@ export default {
           this.ruleModel[item.name] = item.rules
         }
       })
-      console.log(this.formModel)
+      console.log(this.displayFormItems)
     },
     save () {
       this.$refs.form.validate((valid) => {
@@ -85,6 +85,7 @@ export default {
     },
     resetFields () {
       this.$refs.form.resetFields()
+      console.log('formModel', this.formModel)
     }
   }
 }

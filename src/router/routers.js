@@ -104,7 +104,16 @@ export default [
           icon: 'md-albums',
           title: '模态框表单'
         },
-        component: () => import('@/view/curd-components/modal-form/modal-form')
+        component: () => import('@/view/curd-components/modal-form/modal-form.vue')
+      },
+      {
+        path: 'search-bar',
+        name: 'search-bar',
+        meta: {
+          icon: 'ios-search',
+          title: '搜索框'
+        },
+        component: () => import('@/view/curd-components/search-bar/search-bar.vue')
       }
     ]
   },

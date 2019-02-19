@@ -39,16 +39,19 @@ export default {
     showModal (show) {
       if (!show) {
         this.$refs.autoForm.resetFields()
+        this.$bus.emit('initFormItem')
       }
     }
   },
   methods: {
     showAdd () {
       this.type = 'add'
+      this.$refs.autoForm.initData()
       this.showModal = true
     },
     showEdit () {
       this.type = 'edit'
+      this.$refs.autoForm.initData()
       this.showModal = true
     },
     save () {
