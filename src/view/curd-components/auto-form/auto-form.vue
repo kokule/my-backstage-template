@@ -67,6 +67,23 @@ export default {
               }
             ]
           }
+        },
+        {
+          name: 'gender',
+          value: '',
+          formType: 'v-radio',
+          options: {
+            radioItems: [
+              {
+                label: '男',
+                value: 1
+              },
+              {
+                label: '女',
+                value: 2
+              }
+            ]
+          }
         }
       ]
     }

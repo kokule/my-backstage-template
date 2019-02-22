@@ -114,6 +114,15 @@ export default [
           title: '搜索框'
         },
         component: () => import('@/view/curd-components/search-bar/search-bar.vue')
+      },
+      {
+        path: 'curd-page',
+        name: 'curd-page',
+        meta: {
+          icon: 'ios-albums',
+          title: '综合实例'
+        },
+        component: () => import('@/view/curd-components/curd-page/curd-page.vue')
       }
     ]
   },

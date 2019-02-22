@@ -1,7 +1,15 @@
 <template>
   <Modal v-model="showModal">
     <h3 slot="header">{{ type === 'add' ? '新增' : '修改' }}</h3>
-    <auto-form ref="autoForm" :formItems="formItems" :formType="type" :hide-submit="true" @saved="saved"></auto-form>
+    <auto-form ref="autoForm"
+               :formItems="formItems"
+               :formType="type"
+               :hide-submit="true"
+               :add-method="addMethod"
+               :edit-method="editMethod"
+               @saved="saved"
+               @add-success="addSuccessHandle"
+               @edit-success="editSuccessHandle"></auto-form>
     <div slot="footer">
       <Button @click="showModal = false">取消</Button>
       <Button type="primary" @click="save">保存</Button>
@@ -22,11 +30,11 @@ export default {
       required: true,
       type: Array
     },
-    addUrl: {
-      type: String
+    addMethod: {
+      type: Function
     },
-    editUrl: {
-      type: String
+    editMethod: {
+      type: Function
     }
   },
   data () {
@@ -39,13 +47,15 @@ export default {
     showModal (show) {
       if (!show) {
         this.$refs.autoForm.resetFields()
-        this.$bus.emit('initFormItem')
       }
     }
   },
   methods: {
     showAdd () {
       this.type = 'add'
+      this.formItems.forEach(item => {
+        item.value = ''
+      })
       this.$refs.autoForm.initData()
       this.showModal = true
     },
@@ -59,6 +69,14 @@ export default {
     },
     saved (formModel) {
       this.$emit('saved', formModel)
+    },
+    addSuccessHandle () {
+      this.showModal = false
+      this.$emit('add-success')
+    },
+    editSuccessHandle () {
+      this.showModal = false
+      this.$emit('edit-success')
     }
   }
 }

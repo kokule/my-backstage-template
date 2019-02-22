@@ -26,6 +26,10 @@ export default {
     return {
       formItems: [
         {
+          name: 'id',
+          value: null
+        },
+        {
           name: 'username',
           value: '',
           label: '用户名',
@@ -88,15 +92,13 @@ export default {
   },
   methods: {
     add () {
-      this.formItems[0].value = ''
-      this.formItems[1].value = ''
-      this.formItems[2].value = ''
       this.$refs.modal.showAdd()
     },
     edit () {
-      this.formItems[0].value = 'zhu'
-      this.formItems[1].value = '123456'
-      this.formItems[2].value = 3
+      this.formItems[0].value = 1
+      this.formItems[1].value = 'zhu'
+      this.formItems[2].value = '123456'
+      this.formItems[3].value = 3
       this.$refs.modal.showEdit()
     },
     savedHandle (formModel) {

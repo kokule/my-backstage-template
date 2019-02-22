@@ -12,12 +12,14 @@
 <script>
 import input from '_c/form-components/input'
 import select from '_c/form-components/select'
+import radio from '_c/form-components/radio'
 
 export default {
   name: 'auto-form',
   components: {
     'v-input': input,
-    'v-select': select
+    'v-select': select,
+    'v-radio': radio
   },
   props: {
     formType: { // 表单类型 add或者edit 默认add
@@ -28,11 +30,11 @@ export default {
       required: true,
       type: Array
     },
-    addUrl: {
-      type: String
+    addMethod: {
+      type: Function
     },
-    editUrl: {
-      type: String
+    editMethod: {
+      type: Function
     },
     hideSubmit: {
       type: Boolean,
@@ -46,7 +48,8 @@ export default {
       displayFormItems: [],
       formComponents: {
         'v-input': input,
-        'v-select': select
+        'v-select': select,
+        'v-radio': radio
       }
     }
   },
@@ -74,17 +77,39 @@ export default {
           this.ruleModel[item.name] = item.rules
         }
       })
-      console.log(this.displayFormItems)
     },
     save () {
       this.$refs.form.validate((valid) => {
         if (valid) {
+          console.log(this.formModel)
           this.$emit('saved', this.formModel)
+          if (this.formType === 'add') {
+            this.add()
+          } else if (this.formType === 'edit') {
+            this.edit()
+          }
+        }
+      })
+    },
+    add () {
+      this.addMethod(this.formModel).then(res => {
+        if (res.status === 200 && res.data.code === 0) {
+          this.$Message.success('新增成功！')
+          this.$emit('add-success')
+        }
+      })
+    },
+    edit () {
+      this.editMethod(this.formModel).then(res => {
+        if (res.status === 200 && res.data.code === 0) {
+          this.$Message.success('修改成功！')
+          this.$emit('edit-success')
         }
       })
     },
     resetFields () {
       this.$refs.form.resetFields()
+      this.$bus.emit('initFormItem')
       console.log('formModel', this.formModel)
     }
   }

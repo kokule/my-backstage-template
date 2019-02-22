@@ -1,13 +1,14 @@
 <template>
   <div>
     <Card>
-      <page-table :get-url="getUrl" :columns="columns"></page-table>
+      <page-table :get-method="getMethod" :columns="columns"></page-table>
     </Card>
   </div>
 </template>
 
 <script>
 import pageTable from '_c/page-table'
+import { getCars } from '@/api/car'
 
 export default {
   components: {
@@ -16,6 +17,7 @@ export default {
   data () {
     return {
       getUrl: '/api/vehicle/queryAllByEnterpriseId',
+      getMethod: getCars,
       columns: [
         {
           title: '所属单位',
