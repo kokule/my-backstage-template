@@ -70,6 +70,7 @@ export default {
         },
         {
           name: 'gender',
+          label: '性别',
           value: '',
           formType: 'v-radio',
           options: {
@@ -83,7 +84,10 @@ export default {
                 value: 2
               }
             ]
-          }
+          },
+          rules: [
+            { required: true, type: 'number', message: '请选择性别', trigger: 'change' }
+          ]
         }
       ]
     }

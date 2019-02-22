@@ -1,6 +1,10 @@
 <template>
-  <RadioGroup v-model="formValue" @input="$emit('input', formValue)">
-    <Radio v-for="item in options.radioItems" :key="item.label + item.value" :label="item.value">{{ item.label }}</Radio>
+  <RadioGroup v-model="formValue"
+              @input="$emit('input', formValue)"
+              :type="options.type"
+              :size="options.size"
+              :vertical="options.vertical">
+    <Radio v-for="item in options.radioItems" :key="item.label + item.value" :label="item.value" :disabled="item.disabled">{{ item.label }}</Radio>
   </RadioGroup>
 </template>
 
