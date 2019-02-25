@@ -50,6 +50,20 @@ export default {
       },
       searchItems: [
         {
+          name: 'enterpriseId',
+          label: '所属企业',
+          value: '',
+          formType: 'v-select',
+          rules: [
+            { required: true, type: 'number', message: '请选择所属单位', trigger: 'change' }
+          ],
+          options: {
+            selectItems: [],
+            selectLabelKey: 'enterpriseName',
+            selectValueKey: 'id'
+          }
+        },
+        {
           name: 'plateNo',
           label: '车牌号',
           value: '',
@@ -116,6 +130,7 @@ export default {
       getEnterpriseList({ pageIndex: 1, pageSize: 1000 }).then(res => {
         this.enterprises = res.data.data.list
         this.formItems[1].options.selectItems = this.enterprises
+        this.searchItems[0].options.selectItems = this.enterprises
       })
     }
   }

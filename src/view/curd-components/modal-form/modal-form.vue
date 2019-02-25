@@ -81,6 +81,27 @@ export default {
               }
             ]
           }
+        },
+        {
+          name: 'gender',
+          label: '性别',
+          value: '',
+          formType: 'v-radio',
+          options: {
+            radioItems: [
+              {
+                label: '男',
+                value: 1
+              },
+              {
+                label: '女',
+                value: 2
+              }
+            ]
+          },
+          rules: [
+            { required: true, type: 'number', message: '请选择性别', trigger: 'change' }
+          ]
         }
       ],
       info: {
