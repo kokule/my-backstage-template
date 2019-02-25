@@ -111,6 +111,16 @@ export default {
               }
             ]
           }
+        },
+        {
+          name: 'enable',
+          value: 1,
+          label: '启用',
+          formType: 'v-switch',
+          options: {
+            trueValue: 1,
+            falseValue: 0
+          }
         }
       ]
     }

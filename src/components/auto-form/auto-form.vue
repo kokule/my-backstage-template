@@ -14,6 +14,7 @@ import input from '_c/form-components/input'
 import select from '_c/form-components/select'
 import radio from '_c/form-components/radio'
 import checkbox from '_c/form-components/checkbox'
+import vswitch from '_c/form-components/switch'
 
 export default {
   name: 'auto-form',
@@ -21,7 +22,8 @@ export default {
     'v-input': input,
     'v-select': select,
     'v-radio': radio,
-    'v-checkbox': checkbox
+    'v-checkbox': checkbox,
+    'v-switch': vswitch
   },
   props: {
     formType: { // 表单类型 add或者edit 默认add
@@ -52,7 +54,8 @@ export default {
         'v-input': input,
         'v-select': select,
         'v-radio': radio,
-        'v-checkbox': checkbox
+        'v-checkbox': checkbox,
+        'v-switch': vswitch
       }
     }
   },
