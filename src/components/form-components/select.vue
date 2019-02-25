@@ -10,7 +10,8 @@
           :not-found-text="options.notFoundText"
           :placement="options.placement"
           :transfer="options.transfer"
-          :element-id="options.elementId">
+          :element-id="options.elementId"
+          :style="{ width: `${options.width}px` }">
     <Option v-for="item in options.selectItems" :key="getLabel(item) + getValue(item)" :value="getValue(item)">{{ getLabel(item) }}</Option>
   </Select>
 </template>

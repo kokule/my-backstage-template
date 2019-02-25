@@ -20,7 +20,8 @@
         :autocomplete="options.autocomplete"
         :element-id="options.elementId"
         :spellcheck="options.spellcheck"
-        :wrap="options.wrap"></Input>
+        :wrap="options.wrap"
+        :style="{ width: `${options.width}px` }"></Input>
 </template>
 
 <script>

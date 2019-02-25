@@ -60,7 +60,8 @@ export default {
           options: {
             selectItems: [],
             selectLabelKey: 'enterpriseName',
-            selectValueKey: 'id'
+            selectValueKey: 'id',
+            width: 200
           }
         },
         {
@@ -125,6 +126,7 @@ export default {
   created () {
     this.getEnterprises()
   },
+
   methods: {
     getEnterprises () {
       getEnterpriseList({ pageIndex: 1, pageSize: 1000 }).then(res => {
