@@ -88,6 +88,29 @@ export default {
           rules: [
             { required: true, type: 'number', message: '请选择性别', trigger: 'change' }
           ]
+        },
+        {
+          name: 'interest',
+          label: '兴趣爱好',
+          value: [],
+          formType: 'v-checkbox',
+          options: {
+            size: 'large',
+            checkboxItems: [
+              {
+                label: '看书',
+                value: 'read'
+              },
+              {
+                label: '运动',
+                value: 'sports'
+              },
+              {
+                label: '睡觉',
+                value: 'sleep'
+              }
+            ]
+          }
         }
       ]
     }
