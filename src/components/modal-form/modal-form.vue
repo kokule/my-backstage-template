@@ -1,6 +1,6 @@
 <template>
   <Modal v-model="showModal">
-    <h3 slot="header">{{ type === 'add' ? '新增' : '修改' }}</h3>
+    <h3 slot="header">{{title}}</h3>
     <auto-form ref="autoForm"
                :formItems="formItems"
                :formType="type"
@@ -40,7 +40,8 @@ export default {
   data () {
     return {
       showModal: false,
-      type: 'add'
+      type: 'add',
+      title: '新增'
     }
   },
   watch: {
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     showAdd () {
-      this.type = 'add'
+      this.chooseTitle('add')
       this.formItems.forEach(item => {
         item.value = ''
       })
@@ -60,9 +61,27 @@ export default {
       this.showModal = true
     },
     showEdit () {
-      this.type = 'edit'
+      this.chooseTitle('edit')
       this.$refs.autoForm.initData()
       this.showModal = true
+    },
+    showView () {
+      this.chooseTitle('view')
+      this.$refs.autoForm.initData()
+      this.showModal = true
+    },
+    chooseTitle (data) {
+      switch (data) {
+        case 'add':
+          this.title = '新增'
+          break
+        case 'edit':
+          this.title = '编辑'
+          break
+        case 'view':
+          this.title = '详情'
+          break
+      }
     },
     save () {
       this.$refs.autoForm.save()

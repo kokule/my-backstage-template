@@ -4,9 +4,9 @@
       树状表格组件tree-table-vue，基于<a href="https://github.com/MisterTaki/vue-table-with-tree-grid">vue-table-with-tree-grid</a>进行开发，修复了一些bug，添加了一些新属性
       <p><b>支持使用slot-scope进行自定义列渲染内容</b></p>
       <p>文档请看<a href="https://github.com/lison16/tree-table-vue">https://github.com/lison16/tree-table-vue</a></p>
-      <tree-table expand-key="sex" :expand-type="false" :selectable="false" :columns="columns" :data="data" >
-        <template slot="likes" slot-scope="scope">
-          <Button @click="handle(scope)">123</Button>
+      <tree-table expand-key="class" :expand-type="false" :selectable="false" :columns="columns" :data="data" >
+        <template slot="handle" slot-scope="scope">
+          <Button @click="handle(scope.row)">123</Button>
         </template>
       </tree-table>
     </Card>
@@ -20,161 +20,41 @@ export default {
     return {
       columns: [
         {
-          title: 'name',
-          key: 'name',
-          width: '400px'
+          title: '班级',
+          key: 'class'
         },
         {
-          title: 'sex',
-          key: 'sex',
-          minWidth: '50px'
+          title: '姓名',
+          key: 'name'
         },
         {
-          title: 'score',
+          title: '性别',
+          key: 'sex'
+        },
+        {
+          title: '分数',
           key: 'score'
         },
         {
-          title: 'likes',
-          key: 'likes',
-          minWidth: '200px',
+          title: '操作',
+          key: 'handle',
           type: 'template',
-          template: 'likes'
+          template: 'handle'
         }
       ],
       data: [
         {
-          name: 'Jack',
-          sex: 'male',
-          likes: ['football', 'basketball'],
-          score: 10,
+          class: '1班',
           children: [
             {
-              name: 'Ashley',
-              sex: 'female',
-              likes: ['football', 'basketball'],
-              score: 20,
-              children: [
-                {
-                  name: 'Ashley',
-                  sex: 'female',
-                  likes: ['football', 'basketball'],
-                  score: 20
-                },
-                {
-                  name: 'Taki',
-                  sex: 'male',
-                  likes: ['football', 'basketball'],
-                  score: 10,
-                  children: [
-                    {
-                      name: 'Ashley',
-                      sex: 'female',
-                      likes: ['football', 'basketball'],
-                      score: 20
-                    },
-                    {
-                      name: 'Taki',
-                      sex: 'male',
-                      likes: ['football', 'basketball'],
-                      score: 10,
-                      children: [
-                        {
-                          name: 'Ashley',
-                          sex: 'female',
-                          likes: ['football', 'basketball'],
-                          score: 20
-                        },
-                        {
-                          name: 'Taki',
-                          sex: 'male',
-                          likes: ['football', 'basketball'],
-                          score: 10
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              name: '安琪拉',
+              sex: '女',
+              score: 99
             },
             {
-              name: 'Taki',
-              sex: 'male',
-              likes: ['football', 'basketball'],
-              score: 10
-            }
-          ]
-        },
-        {
-          name: 'Tom',
-          sex: 'male',
-          likes: ['football', 'basketball'],
-          score: 20,
-          children: [
-            {
-              name: 'Ashley',
-              sex: 'female',
-              likes: ['football', 'basketball'],
-              score: 20,
-              children: [
-                {
-                  name: 'Ashley',
-                  sex: 'female',
-                  likes: ['football', 'basketball'],
-                  score: 20
-                },
-                {
-                  name: 'Taki',
-                  sex: 'male',
-                  likes: ['football', 'basketball'],
-                  score: 10
-                }
-              ]
-            },
-            {
-              name: 'Taki',
-              sex: 'male',
-              likes: ['football', 'basketball'],
-              score: 10,
-              children: [
-                {
-                  name: 'Ashley',
-                  sex: 'female',
-                  likes: ['football', 'basketball'],
-                  score: 20
-                },
-                {
-                  name: 'Taki',
-                  sex: 'male',
-                  likes: ['football', 'basketball'],
-                  score: 10
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'Tom',
-          sex: 'male',
-          likes: ['football', 'basketball'],
-          score: 20
-        },
-        {
-          name: 'Tom',
-          sex: 'male',
-          likes: ['football', 'basketball'],
-          score: 20,
-          children: [
-            {
-              name: 'Ashley',
-              sex: 'female',
-              likes: ['football', 'basketball'],
-              score: 20
-            },
-            {
-              name: 'Taki',
-              sex: 'male',
-              likes: ['football', 'basketball'],
-              score: 10
+              name: '狄仁杰',
+              sex: '男',
+              score: 59
             }
           ]
         }
@@ -182,8 +62,8 @@ export default {
     }
   },
   methods: {
-    handle (scope) {
-      console.log(scope)
+    handle (row) {
+      console.log(row)
     }
   }
 }

@@ -1,12 +1,16 @@
 <template>
-  <Form ref="form" :model="formModel" :rules="ruleModel">
-    <FormItem v-for="(item, index) in displayFormItems" :key="item.formType + item.name + index" :prop="item.name" :label="item.label">
+  <Row>
+  <Form ref="form" :label-width="70" :model="formModel" :rules="ruleModel">
+    <Col span="12" v-for="(item, index) in displayFormItems"  :key="item.formType + item.name + index">
+    <FormItem  :prop="item.name" :label="item.label">
       <component :is="formComponents[item.formType]" v-model="formModel[item.name]" :options="item.options"></component>
     </FormItem>
+    </Col>
     <FormItem v-show="!hideSubmit">
       <Button type="primary" @click="save">保存</Button>
     </FormItem>
   </Form>
+  </Row>
 </template>
 
 <script>
@@ -87,7 +91,6 @@ export default {
     save () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          console.log(this.formModel)
           this.$emit('saved', this.formModel)
           if (this.formType === 'add') {
             this.add()

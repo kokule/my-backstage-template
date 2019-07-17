@@ -1,14 +1,16 @@
 <template>
   <div>
     <search-bar v-if="searchItems.length > 0" :form-items="searchItems" @search="search" @reset="search"></search-bar>
-    <Button type="success" v-show="addMethod" style="margin-bottom: 10px;" @click="showAdd">新增</Button>
+    <Button type="success" v-show="addMethod" style="margin: 10px 45px;width: 70px" @click="showAdd">新增</Button>
     <page-table ref="pageTable"
                 :get-method="getMethod"
                 :columns="columns"
                 :params="params"
                 :operation="operation"
                 :del-method="delMethod"
-                @edit="showEdit"></page-table>
+                @edit="showEdit"
+                @view="showView"
+    ></page-table>
     <modal-form ref="modalForm"
                 v-show="formItems.length > 0"
                 :add-method="addMethod"
@@ -95,6 +97,13 @@ export default {
         item.value = model[item.name]
       })
       this.$refs.modalForm.showEdit()
+    },
+    showView (model) {
+      console.log(model)
+      this.formItems.forEach(item => {
+        item.value = model[item.area]
+      })
+      this.$refs.modalForm.showView()
     },
     addSuccessHandle () {
       this.$refs.pageTable.refreshNew()

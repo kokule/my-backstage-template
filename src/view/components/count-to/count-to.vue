@@ -9,59 +9,60 @@
           </p>
           <Row type="flex" justify="center" align="middle" class="countto-page-row">
             <div class="count-to-con">
-              <count-to :end="2534"/>
+              <count-to :end="end"/>
             </div>
           </Row>
         </Card>
       </i-col>
-        <i-col span="5" class="padding-left-10">
-          <Card>
-            <p slot="title">
-              <Icon type="code"></Icon>
-              可添加左右文字
-            </p>
-            <Row type="flex" justify="center" align="middle" class="countto-page-row">
-              <div class="count-to-con">
-                <count-to :end="2534">
-                  <span slot="left">Total:&nbsp;</span>
-                  <span slot="right">&nbsp;times</span>
-                </count-to>
-              </div>
-            </Row>
-          </Card>
-        </i-col>
-        <i-col span="8" class="padding-left-10">
-          <Card>
-            <p slot="title">
-              <Icon type="paintbucket"></Icon>
-              自定义样式
-            </p>
-            <Row type="flex" justify="center" align="middle" class="countto-page-row">
-              <div class="count-to-con">
-                <count-to :end="2534" count-class="count-text" unit-class="unit-class">
-                  <span class="slot-text" slot="left">Total:&nbsp;</span>
-                  <span class="slot-text" slot="right">&nbsp;times</span>
-                </count-to>
-              </div>
-            </Row>
-          </Card>
-        </i-col>
-        <i-col span="8" class="padding-left-10">
-          <Card>
-            <p slot="title">
-              <Icon type="settings"></Icon>
-              设置数据格式
-            </p>
-            <Row type="flex" justify="center" align="middle" class="countto-page-row">
-              <div class="count-to-con">
-                <count-to :end="2534" count-class="count-text" unit-class="unit-class" :decimals="2">
-                  <span class="slot-text" slot="left">Total:&nbsp;</span>
-                  <span class="slot-text" slot="right">&nbsp;times</span>
-                </count-to>
-              </div>
-            </Row>
-          </Card>
-        </i-col>
+      <i-col span="5" class="padding-left-10">
+        <Card>
+          <p slot="title">
+            <Icon type="code"></Icon>
+            可添加左右文字
+          </p>
+          <Row type="flex" justify="center" align="middle" class="countto-page-row">
+            <div class="count-to-con">
+              <count-to :end="end">
+                <span slot="left">一共:&nbsp;</span>
+                <span slot="right">&nbsp;times</span>
+              </count-to>
+            </div>
+          </Row>
+        </Card>
+      </i-col>
+      <i-col span="8" class="padding-left-10">
+        <Card>
+          <p slot="title">
+            <Icon type="paintbucket"></Icon>
+            自定义样式
+          </p>
+          <Row type="flex" justify="center" align="middle" class="countto-page-row">
+            <div class="count-to-con">
+              <count-to :end="end" count-class="count-text" unit-class="unit-class">
+                <span class="slot-text" slot="left">总共:&nbsp;</span>
+                <span class="slot-text" slot="right">&nbsp;times</span>
+              </count-to>
+            </div>
+          </Row>
+        </Card>
+      </i-col>
+      <i-col span="8" class="padding-left-10">
+        <Card>
+          <p slot="title">
+            <Icon type="settings"></Icon>
+            设置数据格式
+          </p>
+          <Row type="flex" justify="center" align="middle" class="countto-page-row">
+            <div class="count-to-con">
+              <count-to :end="end" count-class="count-text" unit-class="unit-class" :duration="5" :decimals="2"
+                        :delay="2">
+                <span class="slot-text" slot="left">Total:&nbsp;</span>
+                <span class="slot-text" slot="right">&nbsp;times</span>
+              </count-to>
+            </div>
+          </Row>
+        </Card>
+      </i-col>
     </Row>
     <Row :gutter="14" style="margin-top: 14px;">
       <i-col span="8">
@@ -72,7 +73,7 @@
           </p>
           <Row type="flex" justify="center" align="middle" class="countto-page-row">
             <div class="count-to-con">
-              <count-to :simplify="true" :end="2534" count-class="count-text" unit-class="unit-class">
+              <count-to :simplify="true" :end="end" count-class="count-text" unit-class="unit-class">
                 <span class="slot-text" slot="left">Total:&nbsp;</span>
                 <span class="slot-text" slot="right">&nbsp;times</span>
               </count-to>
@@ -91,8 +92,8 @@
               <count-to :simplify="true" :unit="unit" :end="253" count-class="count-text" unit-class="unit-class">
                 <span class="slot-text" slot="left">原始数据：253&nbsp;=>&nbsp;</span>
               </count-to>
-              <count-to :simplify="true" :unit="unit" :end="2534" count-class="count-text" unit-class="unit-class">
-                <span class="slot-text" slot="left">原始数据：2534&nbsp;=>&nbsp;</span>
+              <count-to :simplify="true" :unit="unit" :end="end" count-class="count-text" unit-class="unit-class">
+                <span class="slot-text" slot="left">原始数据：{{end}}&nbsp;=>&nbsp;</span>
               </count-to>
               <count-to :simplify="true" :unit="unit" :end="257678" count-class="count-text" unit-class="unit-class">
                 <span class="slot-text" slot="left">原始数据：257678&nbsp;=>&nbsp;</span>
@@ -109,7 +110,7 @@
           </p>
           <Row type="flex" justify="center" align="middle" class="countto-page-row">
             <div class="count-to-con">
-              <count-to :end="asynEndVal" count-class="count-text" unit-class="unit-class">
+              <count-to :end="asynEndVal" :duration="5" count-class="count-text" unit-class="unit-class">
                 <span class="slot-text" slot="left">Total:&nbsp;</span>
                 <span class="slot-text" slot="right">&nbsp;times</span>
               </count-to>
@@ -127,7 +128,8 @@
           </p>
           <Row type="flex" justify="center" align="middle" class="countto-page-row">
             <div class="count-to-con">
-              <count-to :delay="500" :simplify="true" :unit="unit2" :end="integratedEndVal" count-class="count-text" unit-class="unit-class">
+              <count-to :delay="500" :simplify="true" :unit="unit2" :end="integratedEndVal" count-class="count-text"
+                        unit-class="unit-class">
                 <span class="slot-text" slot="left">原始数据:&nbsp;{{ integratedEndVal }}&nbsp;=>&nbsp;</span>
                 <span class="slot-text" slot="right">&nbsp;times</span>
               </count-to>
@@ -141,6 +143,7 @@
 
 <script>
 import CountTo from '_c/count-to'
+
 export default {
   name: 'count_to_page',
   components: {
@@ -158,36 +161,41 @@ export default {
   methods: {
     init () {
       setInterval(() => {
-        this.asynEndVal += parseInt(Math.random() * 20)
+        this.asynEndVal += parseInt(Math.random() * 100)
         this.integratedEndVal += parseInt(Math.random() * 30)
       }, 2000)
     }
   },
   mounted () {
+    this.end = 9999
     this.init()
   }
 }
 </script>
 
 <style lang="less">
-@baseColor: ~"#dc9387";
-.countto-page-row{
-  height: 200px;
-}
-.count-to-con{
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-.count-text{
-  font-size: 50px;
-  color: @baseColor;
-}
-.slot-text{
-  font-size: 22px;
-}
-.unit-class{
-  font-size: 30px;
-  color: @baseColor;
-}
+  @baseColor: ~"#dc9387";
+  .countto-page-row {
+    height: 200px;
+  }
+
+  .count-to-con {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .count-text {
+    font-size: 50px;
+    color: @baseColor;
+  }
+
+  .slot-text {
+    font-size: 22px;
+  }
+
+  .unit-class {
+    font-size: 30px;
+    color: @baseColor;
+  }
 </style>

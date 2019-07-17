@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Form ref="searchForm" :model="searchForm" inline>
+    <Form :label-width="80" ref="searchForm" :model="searchForm" inline>
       <FormItem v-for="(item, index) in displayFormItems" :key="item.formType + item.name + index" :prop="item.name" :label="item.label">
         <component :is="formComponents[item.formType]" v-model="searchForm[item.name]" :options="item.options"></component>
       </FormItem>
       <FormItem>
-        <Button style="margin: 33px 10px 0 0;" type="primary" @click="search">搜索</Button>
-        <Button style="margin-top: 33px;" @click="reset">重置</Button>
+        <Button style="margin-right: 10px;width: 70px" type="primary" @click="search">搜索</Button>
+        <Button style="width: 70px" @click="reset">重置</Button>
       </FormItem>
     </Form>
   </div>

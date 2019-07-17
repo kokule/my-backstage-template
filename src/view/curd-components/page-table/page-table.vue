@@ -8,8 +8,7 @@
 
 <script>
 import pageTable from '_c/page-table'
-import { getCars } from '@/api/car'
-
+import { getTableData } from '@/api/data'
 export default {
   components: {
     pageTable
@@ -17,23 +16,33 @@ export default {
   data () {
     return {
       getUrl: '/api/vehicle/queryAllByEnterpriseId',
-      getMethod: getCars,
+      getMethod: getTableData,
       columns: [
         {
-          title: '所属单位',
-          key: 'enterpriseName'
+          title: '序号',
+          key: 'id',
+          align: 'center',
+          width: 150
         },
         {
-          title: '车牌号',
-          key: 'plateNo'
+          title: '名字',
+          key: 'name',
+          align: 'center'
         },
         {
-          title: '车型',
-          key: 'carType'
+          title: '位置',
+          key: 'position',
+          align: 'center'
         },
         {
-          title: '道路运输证',
-          key: 'transportNum'
+          title: '大区',
+          key: 'area',
+          align: 'center'
+        },
+        {
+          title: '擅长英雄',
+          key: 'hero',
+          align: 'center'
         }
       ]
     }

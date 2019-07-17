@@ -27,29 +27,29 @@ export default [
     },
     component: () => import('@/view/login/login.vue')
   },
-  {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
-    component: Main,
-    meta: {
-      hideInMenu: true,
-      notCache: true
-    },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          hideInMenu: true,
-          title: '首页',
-          notCache: true,
-          icon: 'md-home'
-        },
-        component: () => import('@/view/single-page/home')
-      }
-    ]
-  },
+  // {
+  //   path: '/',
+  //   name: '_home',
+  //   redirect: '/home',
+  //   component: Main,
+  //   meta: {
+  //     hideInMenu: true,
+  //     notCache: true
+  //   },
+  //   children: [
+  //     {
+  //       path: '/home',
+  //       name: 'home',
+  //       meta: {
+  //         hideInMenu: false,
+  //         title: '首页',
+  //         notCache: true,
+  //         icon: 'md-home'
+  //       },
+  //       component: () => import('@/view/home')
+  //     }
+  //   ]
+  // },
   {
     path: '/message',
     name: 'message',
@@ -71,11 +71,32 @@ export default [
     ]
   },
   {
+    path: '/',
+    name: 'e-home',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        meta: {
+          hideInMenu: false,
+          title: '首页',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/home')
+      }
+    ]
+  },
+  {
     path: '/curd_components',
     name: 'curd_components',
     meta: {
       icon: 'ios-book',
-      title: 'curd组件'
+      title: '表单实例'
     },
     component: Main,
     children: [
@@ -131,7 +152,7 @@ export default [
     name: 'components',
     meta: {
       icon: 'logo-buffer',
-      title: '组件'
+      title: '常用组件'
     },
     component: Main,
     children: [
@@ -152,15 +173,6 @@ export default [
           title: '拖拽列表'
         },
         component: () => import('@/view/components/drag-list/drag-list.vue')
-      },
-      {
-        path: 'drag_drawer_page',
-        name: 'drag_drawer_page',
-        meta: {
-          icon: 'md-list',
-          title: '可拖拽抽屉'
-        },
-        component: () => import('@/view/components/drag-drawer')
       },
       {
         path: 'org_tree_page',
