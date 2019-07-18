@@ -1,6 +1,6 @@
 /* 校验规则 */
 
-import util from './util'
+import {isPositiveInteger} from './util'
 
 let validate = {}
 
@@ -58,7 +58,7 @@ validate.validateMustLengthFifty = (rule, value, callback) => {
 }
 // 校验正整数，小于100万，非必填
 validate.validateLessMillion = (rule, value, callback) => {
-  if (value && !util.isPositiveInteger(value) || value > 99999) {
+  if (value && !isPositiveInteger(value) || value > 99999) {
     return callback(new Error('应为不超过5位的正整数'))
   } else {
     callback()

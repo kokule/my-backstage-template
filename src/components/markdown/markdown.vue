@@ -65,6 +65,7 @@ export default {
 .markdown-wrapper{
   .editor-toolbar.fullscreen{
     z-index: 9999;
+    color: black;
   }
   .CodeMirror-fullscreen{
     z-index: 9999;
@@ -73,4 +74,7 @@ export default {
     z-index: 9999;
   }
 }
+  .editor-statusbar{
+   color: #000c17;
+  }
 </style>
