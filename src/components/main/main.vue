@@ -5,7 +5,7 @@
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
           <!--<img :src="logo" key="logo" />-->
-          <h2 class="title" v-show="!collapsed">Kokule的前端模板</h2>
+          <h2 class="title" v-show="!collapsed">~~~~~~~~~~~~~~~</h2>
         </div>
       </side-menu>
     </Sider>
